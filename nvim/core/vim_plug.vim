@@ -4,7 +4,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'brooth/far.vim'
-
+Plug 'kalekundert/vim-coiled-snake'
+Plug 'Konfekt/FastFold'
 
 call plug#end()
 
