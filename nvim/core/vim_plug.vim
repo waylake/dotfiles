@@ -1,4 +1,4 @@
-call plug#begin()
+call plug#begin('~/.config/nvim/vim_plug')
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'jpalardy/vim-slime', { 'for': 'python' }
@@ -6,6 +6,13 @@ Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'brooth/far.vim'
 Plug 'kalekundert/vim-coiled-snake'
 Plug 'Konfekt/FastFold'
+" tagbar
+Plug 'majutsushi/tagbar'
+Plug 'pangloss/vim-javascript'
+" javascript
+Plug 'vim-scripts/jsbeautify'
+
+
 
 call plug#end()
 
@@ -24,7 +31,6 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-" customize keymapping
 
-let g:slime_python_ipython = 1
-
+" javascript setting
+let g:javascript_plugin_jsdoc = 1

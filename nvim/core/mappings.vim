@@ -194,3 +194,11 @@ endfunction
 " vim-plug
 " NERDComComment
 nnoremap <Leader>c<space> <plug>NERDComComment
+
+
+nnoremap <Leader>tb :TagbarToggle<CR>
+" nnoremap <silent> <leader>gs :Git<CR>
+
+
+" jsbeautify
+nnoremap <leader>jf :call g:Jsbeautify()<cr>
