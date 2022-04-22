@@ -49,7 +49,7 @@ endfunction
 " function! s:theme_setup_dict.nightfox() dict abort
 "   colorscheme nordfox
 " endfunction
-"
+
 function! s:theme_setup_dict.kanagawa() dict abort
   colorscheme kanagawa
 endfunction
@@ -68,7 +68,9 @@ endfunction
 "       \ 'nightfox': 'nightfox.nvim',
 "       \ 'kanagawa': 'kanagawa.nvim',
 "       \ }
-let s:theme2dir = {'kanagawa': 'kanagawa.nvim'}
+let s:theme2dir = {
+      \ 'kanagawa': 'kanagawa.nvim',
+      \ }
 
 let s:theme = utils#RandElement(keys(s:theme2dir))
 let s:colorscheme_func = printf('s:theme_setup_dict.%s()', s:theme)

@@ -6,12 +6,13 @@ Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'brooth/far.vim'
 Plug 'kalekundert/vim-coiled-snake'
 Plug 'Konfekt/FastFold'
+
 " tagbar
 Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript'
+
 " javascript
 Plug 'vim-scripts/jsbeautify'
-Plug 'elzr/vim-json'
 
 
 
@@ -35,4 +36,3 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " javascript setting
 let g:javascript_plugin_jsdoc = 1
-
