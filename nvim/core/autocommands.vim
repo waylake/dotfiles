@@ -136,3 +136,4 @@ augroup auto_create_dir
   autocmd BufWritePre * lua require('utils').may_create_dir()
 augroup END
 
+autocmd FileWriteCmd *.js Neoformat

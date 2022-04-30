@@ -10,10 +10,14 @@ Plug 'Konfekt/FastFold'
 " tagbar
 Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
-" javascript
-Plug 'vim-scripts/jsbeautify'
 
+" javascript setting
+Plug 'sbdchd/neoformat'
+
+" python formater
+Plug 'Chiel92/vim-autoformat'
 
 
 call plug#end()
@@ -34,5 +38,6 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" javascript setting
-let g:javascript_plugin_jsdoc = 1
+let g:neoformat_try_node_exe = 1
+
+set cursorline
