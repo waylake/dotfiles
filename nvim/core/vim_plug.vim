@@ -15,9 +15,14 @@ Plug 'mxw/vim-jsx'
 
 " javascript setting
 Plug 'sbdchd/neoformat'
+Plug 'vim-scripts/HTML-AutoCloseTag'
 
 " python formater
 Plug 'Chiel92/vim-autoformat'
+Plug 'tell-k/vim-autopep8'
+
+" markdown
+Plug 'iamcco/markdown-preview.nvim'
 
 
 call plug#end()
@@ -41,3 +46,4 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:neoformat_try_node_exe = 1
 
 set cursorline
+" set cursorcolumn
