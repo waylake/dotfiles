@@ -1,6 +1,6 @@
 # dotfiles
 
-새 환경에서 바로 쓰는 **fish + tmux** 설정. macOS·Linux 공통이고, 없는 도구는 알아서 건너뛴다.
+새 환경에서 바로 쓰는 **fish + tmux** 설정 (+ Claude Code 상태줄). macOS·Linux 공통이고, 없는 도구는 알아서 건너뛴다.
 
 ```
 fish/
@@ -12,6 +12,8 @@ fish/
     nvm.fish                  # fish 에서 bash nvm 명령 쓰기
 tmux/
   tmux.conf                   # 설정 전부 (한 파일)
+claude/
+  statusline.sh               # Claude Code 상태줄 (bash + jq)
 ```
 
 ## 새 머신에서
@@ -92,6 +94,36 @@ prefix = **Ctrl-t** (기본 Ctrl-b 아님). 아래는 전부 prefix 를 누른 �
 목록 보기: `abbr`. 추가하려면 머신 파일에 `abbr -a 이름 '명령'`.
 
 `nvm`: `~/.nvm` 이 있으면 fish 에서도 `nvm install 24`, `nvm use 22` 가 되고, `.nvmrc` 가 있는 폴더에 들어가면 그 버전으로 바뀐다.
+
+## Claude Code 상태줄
+
+`~/.claude/settings.json` 에 추가한다(파일이 이미 있으면 `statusLine` 키만 넣는다).
+
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "~/dotfiles/claude/statusline.sh",
+    "padding": 0,
+    "refreshInterval": 30
+  }
+}
+```
+
+jq 가 필요하다(`brew install jq` / `sudo apt install jq`). 없으면 호스트와 폴더만 보인다.
+
+```
+dev1 ~/github/waylake-ssot    main* ↑1  +40 -27
+Opus 5.5 medium │ ctx ●●○○○ 42% 421k/1M │ cache 94% exp 49m  $0.63 │ 5h ●●●○○ 61% ↻2h9m  7d ●●●○○ 56% ↻3d0h
+```
+
+| 항목 | 뜻 |
+|---|---|
+| 1줄 | 호스트, 폴더, git 브랜치(`*` 수정 있음, `↑` `↓` 원격보다 앞섬/뒤처짐), 이번 세션에서 바꾼 줄 수 |
+| `ctx` | 컨텍스트 사용량. 80% 넘으면 빨강 → `/compact` 할 때 |
+| `cache` | 프롬프트 캐시 적중률, `exp` 캐시 만료까지 남은 시간(지나면 `cold`) |
+| `$` | 이번 세션 API 환산 비용(추정) |
+| `5h` / `7d` | 요금제 한도 사용률, `↻` 초기화까지 남은 시간 |
 
 ## 참고
 
