@@ -15,6 +15,8 @@ require("mason-tool-installer").setup({
 		"tailwindcss-language-server",
 		"vtsls",
 		"rust-analyzer",
+		"gopls",
+		"goimports",
 	},
 	auto_update = false,
 	run_on_start = true,
@@ -41,4 +43,5 @@ vim.lsp.enable({
 	"tailwindcss",
 	"glsl_analyzer",
 	"rust_analyzer",
+	"gopls",
 })

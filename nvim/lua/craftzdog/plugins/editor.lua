@@ -110,6 +110,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		sh = { "shfmt" },
 		fish = { "fish_indent" },
+		go = { "goimports" },
 	},
 	formatters = {
 		oxfmt = {
