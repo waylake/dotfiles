@@ -8,6 +8,7 @@ tmux/      tmux 3.2+, prefix Ctrl-t, tpm 플러그인
 ghostty/   Ghostty (Solarized Dark - Vivid, PlemolJP)
 lazygit/   lazygit (delta diff, C = commitizen 커밋)
 czrc       commitizen 설정 (cz-git)
+bin/ide    tmux IDE 배치 (위 에디터 + 아래 3칸). `ln -sf ~/dotfiles/bin/ide ~/.local/bin/ide`
 ```
 
 ## 설치
@@ -62,6 +63,7 @@ tmux (prefix `Ctrl-t` 뒤)
 | `\|` `%` / `-` `"` | 좌우 / 위아래 분할 (지금 폴더) |
 | `h` `j` `k` `l` / `H` `J` `K` `L` | pane 이동 / 크기 (tmux-pain-control) |
 | `e` | 지금 pane 만 남기기 |
+| `i` | IDE 배치 (`bin/ide`: 위 에디터 + 아래 3칸) |
 | `g` | lazygit 팝업 |
 | `o` | 지금 폴더를 Finder 로 열기 |
 | `r` | 설정 다시 읽기 |
