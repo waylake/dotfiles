@@ -1,0 +1,36 @@
+#!/bin/bash
+# claude-hatch 팝업(prefix y)에서 작업하던 Claude 윈도우를
+# 팝업을 띄운 원래 세션의 새 윈도우로 옮긴다. (prefix Y)
+# Args: <session_name> <window_id>   (바인딩에서 run-shell이 확장해서 넘김)
+set -uo pipefail
+
+session="${1:-}"
+win="${2:-}"
+prefix="$(tmux show -gqv @claude_session_prefix)"
+prefix="${prefix:-claude-}"
+
+if [[ "$session" != "$prefix"* ]]; then
+  tmux display-message "hatch 팝업 안에서만 쓸 수 있어요"
+  exit 0
+fi
+
+# 옮길 대상: 팝업을 띄운 윈도우의 세션 → 없으면 팝업을 띄운 바깥 클라이언트의 세션
+target=""
+origin="$(tmux show -t "$session" -qv @claude_origin)"
+[ -n "$origin" ] && target="$(tmux display -p -t "$origin" '#{session_name}' 2>/dev/null)"
+if [ -z "$target" ]; then
+  parent="$(tmux show -gqv @claude_parent)"
+  target="$(tmux list-clients -F '#{client_name} #{session_name}' |
+    awk -v p="$parent" '$1 == p { print $2; exit }')"
+fi
+if [ -z "$target" ] || [[ "$target" == "$prefix"* ]]; then
+  tmux display-message "옮길 세션을 찾지 못했어요"
+  exit 0
+fi
+
+# 마지막 윈도우를 옮기면 hatch 세션은 사라지고 팝업도 자동으로 닫힌다
+tmux move-window -s "$win" -t "$target:"
+tmux select-window -t "$win"
+# hatch 세션에 다른 윈도우가 남아 있어도 팝업은 닫는다
+tmux has-session -t "$session" 2>/dev/null && tmux detach-client -s "$session"
+exit 0
